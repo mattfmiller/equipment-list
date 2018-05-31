@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{#block "title"}}Equipment{{/block}}</title>
+
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+</head>
+<body>
+<ul class="nav nav-tabs">
+    <li role="presentation"><a href="/">Home</a></li>
+    <li role="presentation"><a href="/guitars">See All Guitars</a></li>
+    <li role="presentation"><a href="/amps">See All Amps</a></li>
+    <li role="presentation"><a href="/pedals">See All Pedals</a></li>
+    <li role="presentation"><a href="/guitars/new">Add a New Guitar</a></li>
+    <li role="presentation"><a href="/amps/new">Add a New Amp</a></li>
+    <li role="presentation"><a href="/pedals/new">Add a New Pedal</a></li>
+</ul>
+<div class="container">
+    <!--begin main template-->
+    <div class="page-header">
+        <!--<img src="/images/caspar-rubin-224229.jpg" width="70%">-->
+        <h1>Equipment List <small>A journey into basement!</small></h1>
+    </div>
+
+    <div class="col-md-12">
+        {{#block "content"}}
+        {{/block}}
+
+    </div>
+</div>
+<!--end main template-->
+{{#block "footer"}}
+    </body>
+    </html>
+{{/block}}

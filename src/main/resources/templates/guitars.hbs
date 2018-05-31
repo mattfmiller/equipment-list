@@ -1,0 +1,17 @@
+{{#partial "content"}}
+
+    <h1>Guitars:</h1>
+
+    {{#if guitars}}
+        {{#each guitars }}
+            <img src="{{imageUrl}}" width="75px">
+            <p>{{manufacturer}} - {{model}} <a href="/guitars/{{id}}">read more...</a></p>
+        {{/each}}
+    {{else}}
+        <p>No guitars!</p>
+    {{/if}}
+
+
+{{/partial}}
+
+{{>layout.hbs}}

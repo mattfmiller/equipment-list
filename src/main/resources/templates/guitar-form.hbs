@@ -1,0 +1,50 @@
+{{#partial "content"}}
+
+    {{#if editGuitar}}
+        <h1>Edit this Guitar!</h1>
+        <form action="/guitars/{{editGuitar.id}}/update" method="post">
+            <label for="type">Edit type</label><br>
+            <input id="type" name="type" type="text" value="{{editGuitar.type}}"><br><br>
+            <label for="manufacturer">Edit manufacturer</label><br>
+            <input id="manufacturer" name="manufacturer" type="text" value="{{editGuitar.manufacturer}}"><br><br>
+            <label for="model">Edit model</label><br>
+            <input id="model" name="model" type="text" value="{{editGuitar.model}}"><br><br>
+            <label for="year">Edit year</label><br>
+            <input id="year" name="year" type="number" value="{{editGuitar.year}}"><br><br>
+            <label for="imageUrl">Edit imageUrl</label><br>
+            <input id="imageUrl" name="imageUrl" type="text" value="{{editGuitar.imageUrl}}"><br><br>
+            <label for="color">Edit color</label><br>
+            <input id="color" name="color" type="text" value="{{editGuitar.color}}"><br><br>
+            <label for="finish">Edit finish</label><br>
+            <input id="finish" name="finish" type="text" value="{{editGuitar.finish}}"><br><br>
+            <label for="notes">Edit notes</label><br>
+            <input id="notes" name="notes" type="text" value="{{editGuitar.notes}}"><br><br>
+
+    {{else}}
+        <h1>Add a new guitar!</h1>
+            <form action="/guitars/new" method="post">
+                <label for="type">Enter type</label><br>
+                <input id="type" name="type" type="text"><br><br>
+                <label for="manufacturer">Enter manufacturer</label><br>
+                <input id="manufacturer" name="manufacturer" type="text"><br><br>
+                <label for="model">Enter model</label><br>
+                <input id="model" name="model" type="text"><br><br>
+                <label for="year">Enter year</label><br>
+                <input id="year" name="year" type="number"><br><br>
+                <label for="imageUrl">Enter imageUrl</label><br>
+                <input id="imageUrl" name="imageUrl" type="text"><br><br>
+                <label for="color">Enter color</label><br>
+                <input id="color" name="color" type="text"><br><br>
+                <label for="finish">Enter finish</label><br>
+                <input id="finish" name="finish" type="text"><br><br>
+                <label for="notes">Enter notes</label><br>
+                <input id="notes" name="notes" type="text"><br><br>
+
+
+        
+    {{/if}}
+        <button type="submit" class="btn btn-default">Go!</button>
+    </form>
+{{/partial}}
+
+{{> layout.hbs}}

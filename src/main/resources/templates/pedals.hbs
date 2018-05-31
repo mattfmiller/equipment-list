@@ -1,0 +1,16 @@
+{{#partial "content"}}
+
+    <h1>Pedals:</h1>
+
+    {{#if pedals}}
+        {{#each pedals }}
+            <img src="{{imageUrl}}" width="75px">
+            <p>{{manufacturer}} - {{model}} <a href="/pedals/{{id}}">read more...</a></p>
+        {{/each}}
+    {{else}}
+        <p>No pedals!</p>
+    {{/if}}
+
+{{/partial}}
+
+{{>layout.hbs}}

@@ -1,0 +1,16 @@
+{{#partial "content"}}
+
+    <h1>Amps:</h1>
+
+    {{#if amps}}
+        {{#each amps }}
+            <img src="{{imageUrl}}" width="75px">
+            <p>{{manufacturer}} - {{model}} <a href="/amps/{{id}}">read more...</a></p>
+        {{/each}}
+    {{else}}
+        <p>No amps!</p>
+    {{/if}}
+
+{{/partial}}
+
+{{>layout.hbs}}

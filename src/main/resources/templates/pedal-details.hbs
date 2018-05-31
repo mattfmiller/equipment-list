@@ -1,0 +1,16 @@
+{{#partial "content"}}
+
+    <img src="{{pedal.imageUrl}}" width="400px">
+
+    <h5>Type: {{pedal.type}}</h5>
+    <h5>Manufacturer: {{pedal.manufacturer}}</h5>
+    <h5>Model: {{pedal.model}}</h5>
+    <p>Notes: {{pedal.notes}}</p>
+
+    <br>
+    <a href="/pedals/{{pedal.id}}/update">Update this pedal</a>
+    <br>
+    <a href="/pedals/{{pedal.id}}/delete">Delete this pedal</a>
+
+{{/partial}}
+{{> layout.hbs}}

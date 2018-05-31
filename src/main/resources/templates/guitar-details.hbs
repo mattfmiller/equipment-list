@@ -1,0 +1,19 @@
+{{#partial "content"}}
+
+    <img src="{{guitar.imageUrl}}" width="400px">
+
+    <h5>Type: {{guitar.type}}</h5>
+    <h5>Manufacturer: {{guitar.manufacturer}}</h5>
+    <h5>Model: {{guitar.model}}</h5>
+    <h5>Year: {{guitar.year}}</h5>
+    <h5>Color: {{guitar.color}}</h5>
+    <h5>Finish: {{guitar.finish}}</h5>
+    <p>Notes: {{guitar.notes}}</p>
+
+    <br>
+    <a href="/guitars/{{guitar.id}}/update">Update this guitar</a>
+    <br>
+    <a href="/guitars/{{guitar.id}}/delete">Delete this guitar</a>
+
+{{/partial}}
+{{> layout.hbs}}

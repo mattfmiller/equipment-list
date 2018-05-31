@@ -1,0 +1,20 @@
+{{#partial "content"}}
+
+    <img src="{{amp.imageUrl}}" width="400px">
+
+    <h5>Type: {{amp.type}}</h5>
+    <h5>Manufacturer: {{amp.manufacturer}}</h5>
+    <h5>Model: {{amp.model}}</h5>
+    <h5>Year: {{amp.year}}</h5>
+    <h5>Power: {{amp.power}}</h5>
+    <h5>Grill Cloth: {{amp.grillCloth}}</h5>
+    <h5>Finish: {{amp.finish}}</h5>
+    <p>Notes: {{amp.notes}}</p>
+
+    <br>
+    <a href="/amps/{{amp.id}}/update">Update this amp</a>
+    <br>
+    <a href="/amps/{{amp.id}}/delete">Delete this amp</a>
+
+{{/partial}}
+{{> layout.hbs}}
