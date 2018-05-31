@@ -120,5 +120,123 @@ public class App {
             model.put("pedals", pedals);
             return new ModelAndView(model, "pedals.hbs");
         }, new HandlebarsTemplateEngine());
+
+        get("/guitars/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfGuitarToFind = Integer.parseInt(req.params("id"));
+            Guitar foundGuitar = Guitar.findById(idOfGuitarToFind);
+            model.put("guitar", foundGuitar);
+            return new ModelAndView(model, "guitar-details.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/amps/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfAmpToFind = Integer.parseInt(req.params("id"));
+            Amp foundAmp = Amp.findById(idOfAmpToFind);
+            model.put("amp", foundAmp);
+            return new ModelAndView(model, "amp-details.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/pedals/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfPedalToFind = Integer.parseInt(req.params("id"));
+            Pedal foundPedal = Pedal.findById(idOfPedalToFind);
+            model.put("pedal", foundPedal);
+            return new ModelAndView(model, "pedal-details.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/guitars/:id/update", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfGuitarToEdit = Integer.parseInt(req.params("id"));
+            Guitar editGuitar = Guitar.findById(idOfGuitarToEdit);
+            model.put("editGuitar", editGuitar);
+            return new ModelAndView(model, "guitar-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/amps/:id/update", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfAmpToEdit = Integer.parseInt(req.params("id"));
+            Amp editAmp = Amp.findById(idOfAmpToEdit);
+            model.put("editAmp", editAmp);
+            return new ModelAndView(model, "amp-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/pedals/:id/update", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfPedalToEdit = Integer.parseInt(req.params("id"));
+            Pedal editPedal = Pedal.findById(idOfPedalToEdit);
+            model.put("editPedal", editPedal);
+            return new ModelAndView(model, "pedal-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        post("/guitars/:id/update", (request, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String type = request.queryParams("type");
+            String manufacturer = request.queryParams("manufacturer");
+            String newModel = request.queryParams("model");
+            int year = Integer.parseInt(request.queryParams("year"));
+            String imageUrl = request.queryParams("imageUrl");
+            String color = request.queryParams("color");
+            String finish = request.queryParams("finish");
+            String notes = request.queryParams("notes");
+            int idOfGuitarToEdit = Integer.parseInt(request.params("id"));
+            Guitar editGuitar = Guitar.findById(idOfGuitarToEdit);
+            editGuitar.update(type, manufacturer, newModel, year, imageUrl, color, finish, notes);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        post("/amps/:id/update", (request, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String type = request.queryParams("type");
+            String manufacturer = request.queryParams("manufacturer");
+            String newModel = request.queryParams("model");
+            int year = Integer.parseInt(request.queryParams("year"));
+            String power = request.queryParams("power");
+            String imageUrl = request.queryParams("imageUrl");
+            String grillCloth = request.queryParams("grillCloth");
+            String finish = request.queryParams("finish");
+            String notes = request.queryParams("notes");
+            int idOfAmpToEdit = Integer.parseInt(request.params("id"));
+            Amp editAmp = Amp.findById(idOfAmpToEdit);
+            editAmp.update(type, manufacturer, newModel, year, power, imageUrl, finish, grillCloth, notes);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        post("/pedals/:id/update", (request, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String type = request.queryParams("type");
+            String manufacturer = request.queryParams("manufacturer");
+            String newModel = request.queryParams("model");
+            String imageUrl = request.queryParams("imageUrl");
+            String notes = request.queryParams("notes");
+            int idOfPedalToEdit = Integer.parseInt(request.params("id"));
+            Pedal editPedal = Pedal.findById(idOfPedalToEdit);
+            editPedal.update(type,manufacturer, newModel, imageUrl, notes);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/guitars/:id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfGuitarToDelete = Integer.parseInt(req.params("id"));
+            Guitar deleteGuitar = Guitar.findById(idOfGuitarToDelete);
+            deleteGuitar.deleteGuitar();
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/amps/:id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfAmpToDelete = Integer.parseInt(req.params("id"));
+            Amp deleteAmp = Amp.findById(idOfAmpToDelete);
+            deleteAmp.deleteAmp();
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/pedals/:id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfPedalToDelete = Integer.parseInt(req.params("id"));
+            Pedal deletePedal = Pedal.findById(idOfPedalToDelete);
+            deletePedal.deletePedal();
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }
