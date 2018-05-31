@@ -4,7 +4,12 @@
         <h1>Edit this Guitar!</h1>
         <form action="/guitars/{{editGuitar.id}}/update" method="post">
             <label for="type">Edit type</label><br>
-            <input id="type" name="type" type="text" value="{{editGuitar.type}}"><br><br>
+            <select id="type" name="type">
+                <option value="Electric">Electric</option>
+                <option value="Acoustic">Acoustic</option>
+                <option value="Baritone">Baritone</option>
+                <option value="Bass">Bass</option>
+            </select><br><br>
             <label for="manufacturer">Edit manufacturer</label><br>
             <input id="manufacturer" name="manufacturer" type="text" value="{{editGuitar.manufacturer}}"><br><br>
             <label for="model">Edit model</label><br>
@@ -17,14 +22,19 @@
             <input id="color" name="color" type="text" value="{{editGuitar.color}}"><br><br>
             <label for="finish">Edit finish</label><br>
             <input id="finish" name="finish" type="text" value="{{editGuitar.finish}}"><br><br>
-            <label for="notes">Edit notes</label><br>
-            <input id="notes" name="notes" type="text" value="{{editGuitar.notes}}"><br><br>
+            <!--<label for="notes">Edit notes</label><br>-->
+            <!--<input id="notes" name="notes" type="text" value="{{editGuitar.notes}}"><br><br>-->
 
     {{else}}
         <h1>Add a new guitar!</h1>
             <form action="/guitars/new" method="post">
                 <label for="type">Enter type</label><br>
-                <input id="type" name="type" type="text"><br><br>
+                <select id="type" name="type">
+                    <option value="Electric">Electric</option>
+                    <option value="Acoustic">Acoustic</option>
+                    <option value="Baritone">Baritone</option>
+                    <option value="Bass">Bass</option>
+                </select><br><br>
                 <label for="manufacturer">Enter manufacturer</label><br>
                 <input id="manufacturer" name="manufacturer" type="text"><br><br>
                 <label for="model">Enter model</label><br>
@@ -37,8 +47,8 @@
                 <input id="color" name="color" type="text"><br><br>
                 <label for="finish">Enter finish</label><br>
                 <input id="finish" name="finish" type="text"><br><br>
-                <label for="notes">Enter notes</label><br>
-                <input id="notes" name="notes" type="text"><br><br>
+                <!--<label for="notes">Enter notes</label><br>-->
+                <!--<input id="notes" name="notes" type="text"><br><br>-->
 
 
         

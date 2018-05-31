@@ -4,7 +4,10 @@
         <h1>Edit this Amp!</h1>
         <form action="/amps/{{editAmp.id}}/update" method="post">
             <label for="type">Edit type</label><br>
-            <input id="type" name="type" type="text" value="{{editAmp.type}}"><br><br>
+            <select id="type" name="type">
+                <option value="Guitar">Guitar</option>
+                <option value="Bass">Bass</option>
+            </select><br><br>
             <label for="manufacturer">Edit manufacturer</label><br>
             <input id="manufacturer" name="manufacturer" type="text" value="{{editAmp.manufacturer}}"><br><br>
             <label for="model">Edit model</label><br>
@@ -26,7 +29,10 @@
             <h1>Add a new amp!</h1>
         <form action="/amps/new" method="post">
             <label for="type">Enter type</label><br>
-            <input id="type" name="type" type="text"><br><br>
+            <select id="type" name="type">
+                <option value="Guitar">Guitar</option>
+                <option value="Bass">Bass</option>
+            </select><br><br>
             <label for="manufacturer">Enter manufacturer</label><br>
             <input id="manufacturer" name="manufacturer" type="text"><br><br>
             <label for="model">Enter model</label><br>

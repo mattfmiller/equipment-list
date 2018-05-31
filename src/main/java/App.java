@@ -4,6 +4,7 @@ import java.util.Map;
 
 import models.Guitar;
 import models.Amp;
+import models.Note;
 import models.Pedal;
 
 import spark.ModelAndView;
@@ -50,7 +51,7 @@ public class App {
             String imageUrl = request.queryParams("imageUrl");
             String color = request.queryParams("color");
             String finish = request.queryParams("finish");
-            String notes = request.queryParams("notes");
+//            String notes = request.queryParams("notes");
             Guitar newGuitar = new Guitar();
             newGuitar.setType(type);
             newGuitar.setManufacturer(manufacturer);
@@ -59,7 +60,7 @@ public class App {
             newGuitar.setImageUrl(imageUrl);
             newGuitar.setColor(color);
             newGuitar.setFinish(finish);
-            newGuitar.setNotes(notes);
+//            newGuitar.setNotes(notes);
             model.put("guitars", newGuitar);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
@@ -135,6 +136,19 @@ public class App {
             return new ModelAndView(model, "guitar-details.hbs");
         }, new HandlebarsTemplateEngine());
 
+        post("/guitars/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String userInput = req.queryParams("note");
+            Note userNote = new Note(userInput);
+            int idOfGuitarToFind = Integer.parseInt(req.params("id"));
+            Guitar commentGuitar = Guitar.findById(idOfGuitarToFind);
+            commentGuitar.addNote(userNote);
+            res.redirect("/guitars/" + commentGuitar.getId());
+            return null;
+//            model.put("guitar", commentGuitar);
+//            return new ModelAndView(model, "guitar-details.hbs");
+        }, new HandlebarsTemplateEngine());
+
         get("/amps/:id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfAmpToFind = Integer.parseInt(req.params("id"));
@@ -184,10 +198,10 @@ public class App {
             String imageUrl = request.queryParams("imageUrl");
             String color = request.queryParams("color");
             String finish = request.queryParams("finish");
-            String notes = request.queryParams("notes");
+//            String notes = request.queryParams("notes");
             int idOfGuitarToEdit = Integer.parseInt(request.params("id"));
             Guitar editGuitar = Guitar.findById(idOfGuitarToEdit);
-            editGuitar.update(type, manufacturer, newModel, year, imageUrl, color, finish, notes);
+            editGuitar.update(type, manufacturer, newModel, year, imageUrl, color, finish);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 

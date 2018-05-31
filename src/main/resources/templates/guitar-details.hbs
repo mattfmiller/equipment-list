@@ -8,12 +8,24 @@
     <h5>Year: {{guitar.year}}</h5>
     <h5>Color: {{guitar.color}}</h5>
     <h5>Finish: {{guitar.finish}}</h5>
-    <p>Notes: {{guitar.notes}}</p>
+    <!--<p>Notes: {{guitar.notes}}</p>-->
 
     <br>
     <a href="/guitars/{{guitar.id}}/update">Update this guitar</a>
     <br>
     <a href="/guitars/{{guitar.id}}/delete">Delete this guitar</a>
+    <br><br>
+
+    {{#each guitar.noteList}}
+        <p>Date: {{timeStamp}}</p>
+        <p>{{comment}}</p>
+    {{/each}}
+
+    <form action="/guitars/{{guitar.id}}" method="post">
+        <label for="note">Add a Note</label>
+        <input id="note" name="note" type="text">
+        <button type="submit" class="btn btn-default">Add Note</button>
+    </form>
 
 {{/partial}}
 {{> layout.hbs}}

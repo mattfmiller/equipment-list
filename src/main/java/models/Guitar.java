@@ -10,9 +10,10 @@ public class Guitar {
     private String imageUrl;
     private String color;
     private String finish;
-    private String notes;
+//    private String notes;
     private int id;
     private static ArrayList<Guitar> guitarList = new ArrayList<>();
+    private ArrayList<Note> noteList = new ArrayList<>();
 
     public Guitar() {
         guitarList.add(this);
@@ -75,13 +76,13 @@ public class Guitar {
         this.finish = finish;
     }
 
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
+//    public String getNotes() {
+//        return notes;
+//    }
+//
+//    public void setNotes(String notes) {
+//        this.notes = notes;
+//    }
 
     public int getId() {
         return id;
@@ -95,7 +96,7 @@ public class Guitar {
         return guitarList.get(id-1);
     }
 
-    public void update(String type, String manufacturer, String model, int year, String imageUrl, String color, String finish, String notes){
+    public void update(String type, String manufacturer, String model, int year, String imageUrl, String color, String finish){
         this.type = type;
         this.manufacturer = manufacturer;
         this.model = model;
@@ -103,7 +104,7 @@ public class Guitar {
         this.imageUrl = imageUrl;
         this.color = color;
         this.finish = finish;
-        this.notes = notes;
+//        this.notes = notes;
     }
 
     public void deleteGuitar() {
@@ -116,5 +117,13 @@ public class Guitar {
         } else {
             return guitarList.get(guitarList.size() - 1);
         }
+    }
+
+    public void addNote(Note addedNote) {
+        noteList.add(addedNote);
+    }
+
+    public ArrayList<Note> getNoteList() {
+        return noteList;
     }
 }
