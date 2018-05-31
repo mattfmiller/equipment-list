@@ -120,4 +120,12 @@ public class Amp {
     public void deleteAmp() {
         ampList.remove(id-1);
     }
+
+    public static Amp recentAmp() {
+        if (ampList.size() == 0){
+            return null;
+        } else {
+            return ampList.get(ampList.size() - 1);
+        }
+    }
 }

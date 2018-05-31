@@ -109,4 +109,12 @@ public class Guitar {
     public void deleteGuitar() {
         guitarList.remove(id-1);
     }
+
+    public static Guitar recentGuitar() {
+        if (guitarList.size() == 0){
+            return null;
+        } else {
+            return guitarList.get(guitarList.size() - 1);
+        }
+    }
 }

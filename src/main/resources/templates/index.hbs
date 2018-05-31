@@ -1,5 +1,35 @@
 {{#partial "content"}}
 
+    {{#if recentGuitar}}
+        <p>Recent Guitar Added:</p>
+        <br>
+        <img src="{{recentGuitar.imageUrl}}" width="250px">
+        <br>
+        <p><a href="/guitars/{{recentGuitar.id}}" >{{recentGuitar.manufacturer}} - {{recentGuitar.model}}</a></p>
+    {{else}}
+        <p>No recent Guitars</p>
+    {{/if}}
+
+    {{#if recentAmp}}
+        <p>Recent Amp Added:</p>
+        <br>
+        <img src="{{recentAmp.imageUrl}}" width="250px">
+        <br>
+        <p><a href="/amps/{{recentAmp.id}}" >{{recentAmp.manufacturer}} - {{recentAmp.model}}</a></p>
+    {{else}}
+        <p>No recent Amp</p>
+    {{/if}}
+
+    {{#if recentPedal}}
+        <p>Recent Pedal Added:</p>
+        <br>
+        <img src="{{recentPedal.imageUrl}}" width="250px">
+        <br>
+        <p><a href="/pedals/{{recentPedal.id}}" >{{recentPedal.manufacturer}} - {{recentPedal.model}}</a></p>
+    {{else}}
+        <p>No recent Pedals</p>
+    {{/if}}
+
 {{/partial}}
 
 {{>layout.hbs}}

@@ -79,4 +79,13 @@ public class Pedal {
     public void deletePedal() {
         pedalList.remove(id-1);
     }
+
+    public static Pedal recentPedal() {
+        if (pedalList.size() == 0){
+            return null;
+        } else {
+            return pedalList.get(pedalList.size() - 1);
+        }
+    }
 }
+

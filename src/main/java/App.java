@@ -17,6 +17,12 @@ public class App {
 
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
+            Guitar recentGuitar = Guitar.recentGuitar();
+            model.put("recentGuitar", recentGuitar);
+            Amp recentAmp = Amp.recentAmp();
+            model.put("recentAmp", recentAmp);
+            Pedal recentPedal = Pedal.recentPedal();
+            model.put("recentPedal", recentPedal);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
