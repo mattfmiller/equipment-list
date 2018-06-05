@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Guitar {
     private String type;
@@ -10,14 +11,10 @@ public class Guitar {
     private String imageUrl;
     private String color;
     private String finish;
-//    private String notes;
     private int id;
-    private static ArrayList<Guitar> guitarList = new ArrayList<>();
-    private ArrayList<Note> noteList = new ArrayList<>();
 
     public Guitar() {
-        guitarList.add(this);
-        this.id = guitarList.size();
+
     }
 
     public String getType() {
@@ -76,54 +73,32 @@ public class Guitar {
         this.finish = finish;
     }
 
-//    public String getNotes() {
-//        return notes;
-//    }
-//
-//    public void setNotes(String notes) {
-//        this.notes = notes;
-//    }
-
     public int getId() {
         return id;
     }
 
-    public static ArrayList<Guitar> getGuitarList() {
-        return guitarList;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public static Guitar findById(int id){
-        return guitarList.get(id-1);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Guitar guitar = (Guitar) o;
+        return year == guitar.year &&
+                id == guitar.id &&
+                Objects.equals(type, guitar.type) &&
+                Objects.equals(manufacturer, guitar.manufacturer) &&
+                Objects.equals(model, guitar.model) &&
+                Objects.equals(imageUrl, guitar.imageUrl) &&
+                Objects.equals(color, guitar.color) &&
+                Objects.equals(finish, guitar.finish);
     }
 
-    public void update(String type, String manufacturer, String model, int year, String imageUrl, String color, String finish){
-        this.type = type;
-        this.manufacturer = manufacturer;
-        this.model = model;
-        this.year = year;
-        this.imageUrl = imageUrl;
-        this.color = color;
-        this.finish = finish;
-//        this.notes = notes;
-    }
+    @Override
+    public int hashCode() {
 
-    public void deleteGuitar() {
-        guitarList.remove(id-1);
-    }
-
-    public static Guitar recentGuitar() {
-        if (guitarList.size() == 0){
-            return null;
-        } else {
-            return guitarList.get(guitarList.size() - 1);
-        }
-    }
-
-    public void addNote(Note addedNote) {
-        noteList.add(addedNote);
-    }
-
-    public ArrayList<Note> getNoteList() {
-        return noteList;
+        return Objects.hash(type, manufacturer, model, year, imageUrl, color, finish, id);
     }
 }

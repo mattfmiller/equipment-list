@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Pedal {
     private String type;
@@ -9,11 +10,8 @@ public class Pedal {
     private String imageUrl;
     private String notes;
     private int id;
-    private static ArrayList<Pedal> pedalList = new ArrayList<>();
 
     public Pedal() {
-        pedalList.add(this);
-        this.id = pedalList.size();
     }
 
     public String getType() {
@@ -60,32 +58,27 @@ public class Pedal {
         return id;
     }
 
-    public static ArrayList<Pedal> getPedalList() {
-        return pedalList;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public static Pedal findById(int id){
-        return pedalList.get(id-1);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pedal pedal = (Pedal) o;
+        return id == pedal.id &&
+                Objects.equals(type, pedal.type) &&
+                Objects.equals(manufacturer, pedal.manufacturer) &&
+                Objects.equals(model, pedal.model) &&
+                Objects.equals(imageUrl, pedal.imageUrl) &&
+                Objects.equals(notes, pedal.notes);
     }
 
-    public void update(String type, String manufacturer, String model, String imageUrl, String notes){
-        this.type = type;
-        this.manufacturer = manufacturer;
-        this.model = model;
-        this.imageUrl = imageUrl;
-        this.notes = notes;
-    }
+    @Override
+    public int hashCode() {
 
-    public void deletePedal() {
-        pedalList.remove(id-1);
-    }
-
-    public static Pedal recentPedal() {
-        if (pedalList.size() == 0){
-            return null;
-        } else {
-            return pedalList.get(pedalList.size() - 1);
-        }
+        return Objects.hash(type, manufacturer, model, imageUrl, notes, id);
     }
 }
 

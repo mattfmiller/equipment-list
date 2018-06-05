@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Amp {
     private String type;
@@ -11,13 +12,9 @@ public class Amp {
     private String imageUrl;
     private String finish;
     private String grillCloth;
-    private String notes;
     private int id;
-    private static ArrayList<Amp> ampList = new ArrayList<>();
 
     public Amp() {
-        ampList.add(this);
-        this.id = ampList.size();
     }
 
 
@@ -85,47 +82,33 @@ public class Amp {
         this.grillCloth = grillCloth;
     }
 
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
-
     public int getId() {
         return id;
     }
 
-    public static ArrayList<Amp> getAmpList() {
-        return ampList;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public static Amp findById(int id){
-        return ampList.get(id-1);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Amp amp = (Amp) o;
+        return year == amp.year &&
+                id == amp.id &&
+                Objects.equals(type, amp.type) &&
+                Objects.equals(manufacturer, amp.manufacturer) &&
+                Objects.equals(model, amp.model) &&
+                Objects.equals(power, amp.power) &&
+                Objects.equals(imageUrl, amp.imageUrl) &&
+                Objects.equals(finish, amp.finish) &&
+                Objects.equals(grillCloth, amp.grillCloth);
     }
 
-    public void update(String type, String manufacturer, String model, int year, String power, String imageUrl, String finish, String grillCloth, String notes){
-        this.type = type;
-        this.manufacturer = manufacturer;
-        this.model = model;
-        this.year = year;
-        this.power = power;
-        this.imageUrl = imageUrl;
-        this.grillCloth = grillCloth;
-        this.finish = finish;
-        this.notes = notes;
-    }
+    @Override
+    public int hashCode() {
 
-    public void deleteAmp() {
-        ampList.remove(id-1);
-    }
-
-    public static Amp recentAmp() {
-        if (ampList.size() == 0){
-            return null;
-        } else {
-            return ampList.get(ampList.size() - 1);
-        }
+        return Objects.hash(type, manufacturer, model, year, power, imageUrl, finish, grillCloth,  id);
     }
 }
